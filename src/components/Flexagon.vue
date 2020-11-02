@@ -65,8 +65,8 @@ function easeInOut (t, k = 2) {
 
 <style lang="scss">
 .flexagon {
-  height: 100vh;
-  width: 100vh;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   perspective: 1000px;
