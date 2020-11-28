@@ -105,31 +105,32 @@ function easeInOut (t, k = 2) {
       position: absolute;
       width: $inner-side;
       height: $inner-side;
-      border-top: 0.5 * $inner-side solid transparent;
-      border-bottom: 0.5 * $inner-side solid transparent;
+      // border-top: 0.5 * $inner-side solid transparent;
+      // border-bottom: 0.5 * $inner-side solid transparent;
       box-sizing: border-box;
+      background-size: contain;
     }
   }
 
   .triangle-1,
-  .triangle-2 {
+  .triangle-3 {
     border-left: $side solid black;
     transform-origin: 0 50%;
 
     & > div {
-      border-left: $inner-side solid currentColor;
+      // border-left: $inner-side solid currentColor;
       left: -$side + $outline-x;
       top: -$side / 2 + 0.5 * $outline-x + $outline-y;
     }
   }
 
-  .triangle-3,
+  .triangle-2,
   .triangle-4 {
     border-right: $side solid black;
     transform-origin: $cos30 * 100% 50%;
 
     & > div {
-      border-right: $inner-side solid currentColor;
+      // border-right: $inner-side solid currentColor;
       right: -$side + $outline-x;
       top: -$side / 2 + 0.5 * $outline-x + $outline-y;
     }
@@ -140,12 +141,12 @@ function easeInOut (t, k = 2) {
     transform: rotateY(-30deg);
   }
 
-  .triangle-2 {
-    color: #38B2AC ;
+  .triangle-3 {
+    color: #38B2AC;
     transform: rotateY(30deg);
   }
 
-  .triangle-3 {
+  .triangle-2 {
     color: #4299E1;
     transform: rotateX(90deg) rotateY(-30deg) translateX(-(1 - $cos30) * $side);
   }
@@ -155,24 +156,36 @@ function easeInOut (t, k = 2) {
     transform: rotateX(90deg) rotateY(30deg) translateX(-(1 - $cos30) * $side);
   }
 
+  .block-1 {
+    transform: rotateZ(-120deg);
+  }
+
   .block-2 {
-    transform: scaleX(-1);
+    transform: rotateZ(-120deg) scaleX(-1);
   }
 
   .block-3 {
-    transform: rotateZ(120deg);
+    transform: rotateZ(0);
   }
 
   .block-4 {
-    transform: rotateZ(120deg) scaleX(-1);
+    transform: rotateZ(0) scaleX(-1);
   }
 
   .block-5 {
-    transform: rotateZ(240deg);
+    transform: rotateZ(120deg);
   }
 
   .block-6 {
-    transform: rotateZ(240deg) scaleX(-1);
+    transform: rotateZ(120deg) scaleX(-1);
+  }
+
+  @for $triangle from 1 through 4 {
+    @for $block from 1 through 6 {
+      .block-#{$block} .triangle-#{$triangle} > div {
+        background-image: url(../assets/1-#{$triangle}-#{$block}.png);
+      }
+    }
   }
 }
 </style>
